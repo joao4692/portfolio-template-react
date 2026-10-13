@@ -1,0 +1,32 @@
+/* ── PALETA DE CORES ─────────────────────────────────────────
+   Troque as 4 cores abaixo e o site inteiro acompanha.
+   Use qualquer formato de cor do CSS: #d85a30, rgb(216 90 48), tomato... */
+:root {
+  --cor-primaria: #d85a30; /* destaque: botões, links, faixa de divulgação */
+  --cor-secundaria: #0f2733; /* fundos escuros e textos principais */
+  --cor-terciaria: #6db33f; /* destaque da seção Estudos */
+  --cor-quaternaria: #f8f8fa; /* fundo das seções claras */
+}
+
+/* ── VARIAÇÕES ───────────────────────────────────────────────
+   Tons mais claros e mais escuros, calculados a partir das 4 cores acima.
+   Normalmente você não precisa editar esta parte. */
+:root {
+  --cor-primaria-clara: color-mix(in oklab, var(--cor-primaria), white 26%);
+  --cor-primaria-escura: color-mix(in oklab, var(--cor-primaria), black 9%);
+
+  --cor-secundaria-clara: color-mix(in oklab, var(--cor-secundaria), white 9%);
+  --cor-secundaria-suave: color-mix(in oklab, var(--cor-secundaria), white 4%);
+  --cor-secundaria-escura: color-mix(in oklab, var(--cor-secundaria), black 14%);
+
+  --cor-terciaria-escura: color-mix(in oklab, var(--cor-terciaria), black 27%);
+
+  --cor-quaternaria-escura: color-mix(in oklab, var(--cor-quaternaria), black 2%);
+}
+
+/* navegadores mais novos: tom claro da primária mais vivo (só aumenta a luminosidade) */
+@supports (color: oklch(from red l c h)) {
+  :root {
+    --cor-primaria-clara: oklch(from var(--cor-primaria) calc(l + 0.11) c h);
+  }
+}

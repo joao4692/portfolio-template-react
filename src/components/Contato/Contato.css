@@ -1,0 +1,198 @@
+/* ── SEÇÃO ────────────────────────────────────────────────── */
+.contato {
+  background: var(--cor-secundaria-escura);
+  padding: 5rem 3.5rem 6rem 11vw;
+}
+
+.contato-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--cor-primaria);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.contato-titulo {
+  font-size: 38px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.8px;
+  line-height: 1.15;
+  margin: 0 0 0.75rem;
+  position: relative;
+}
+
+.contato-titulo::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: var(--cor-primaria);
+  border-radius: 2px;
+  margin-top: 14px;
+}
+
+.contato-sub {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.45);
+  margin: 1.5rem 0 3.5rem;
+}
+
+/* ── GRID DE CARDS ────────────────────────────────────────── */
+.contato-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  max-width: 880px;
+}
+
+/* ── CARD BASE ────────────────────────────────────────────── */
+.contato-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 2.5rem 1.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  text-decoration: none;
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease,
+    background 0.28s ease,
+    border-color 0.28s ease;
+}
+
+/* ── CÍRCULO DO ÍCONE ─────────────────────────────────────── */
+.contato-icon-wrap {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.07);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  transition:
+    transform 0.28s ease,
+    background 0.28s ease,
+    color 0.28s ease;
+}
+
+.contato-nome {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  transition: color 0.2s;
+}
+
+.contato-acao {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.35);
+  transition:
+    color 0.2s,
+    letter-spacing 0.2s;
+}
+
+/* ── CORES BASE DOS ÍCONES ────────────────────────────────── */
+.contato-linkedin .contato-icon-wrap {
+  color: #0a66c2;
+}
+.contato-github .contato-icon-wrap {
+  color: #e6edf3;
+}
+.contato-instagram .contato-icon-wrap {
+  color: #e1306c;
+}
+.contato-whatsapp .contato-icon-wrap {
+  color: #25d366;
+}
+
+/* ── HOVER LINKEDIN ───────────────────────────────────────── */
+.contato-linkedin:hover {
+  transform: translateY(-10px);
+  background: rgba(10, 102, 194, 0.12);
+  border-color: rgba(10, 102, 194, 0.4);
+  box-shadow: 0 20px 44px rgba(10, 102, 194, 0.22);
+}
+.contato-linkedin:hover .contato-icon-wrap {
+  background: #0a66c2;
+  color: #fff;
+  transform: scale(1.12) rotate(-6deg);
+}
+
+/* ── HOVER GITHUB ─────────────────────────────────────────── */
+.contato-github:hover {
+  transform: translateY(-10px);
+  background: rgba(230, 237, 243, 0.08);
+  border-color: rgba(230, 237, 243, 0.3);
+  box-shadow: 0 20px 44px rgba(255, 255, 255, 0.07);
+}
+.contato-github:hover .contato-icon-wrap {
+  background: #e6edf3;
+  color: var(--cor-secundaria);
+  transform: scale(1.12) rotate(-6deg);
+}
+
+/* ── HOVER INSTAGRAM ──────────────────────────────────────── */
+.contato-instagram:hover {
+  transform: translateY(-10px);
+  background: rgba(225, 48, 108, 0.12);
+  border-color: rgba(225, 48, 108, 0.4);
+  box-shadow: 0 20px 44px rgba(225, 48, 108, 0.22);
+}
+.contato-instagram:hover .contato-icon-wrap {
+  background: linear-gradient(135deg, #f9ce34 0%, #ee2a7b 50%, #6228d7 100%);
+  color: #fff;
+  transform: scale(1.12) rotate(-6deg);
+}
+
+/* ── HOVER WHATSAPP ───────────────────────────────────────── */
+.contato-whatsapp:hover {
+  transform: translateY(-10px);
+  background: rgba(37, 211, 102, 0.1);
+  border-color: rgba(37, 211, 102, 0.35);
+  box-shadow: 0 20px 44px rgba(37, 211, 102, 0.18);
+}
+.contato-whatsapp:hover .contato-icon-wrap {
+  background: #25d366;
+  color: #fff;
+  transform: scale(1.12) rotate(-6deg);
+}
+
+/* ── HOVER TEXTOS ─────────────────────────────────────────── */
+.contato-card:hover .contato-acao {
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 0.3px;
+}
+
+/* ── RESPONSIVO ───────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .contato-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .contato {
+    padding: 4rem 1.5rem 5rem;
+  }
+
+  .contato-titulo {
+    font-size: 28px;
+  }
+
+  .contato-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .contato-icon-wrap {
+    width: 60px;
+    height: 60px;
+    font-size: 26px;
+  }
+}

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1131" width="1600" height="1131">
+  <rect width="1600" height="1131" fill="#161a22"/>
+  <rect x="16" y="16" width="1568" height="1099" rx="22" fill="none" stroke="#4a5368" stroke-width="4" stroke-dasharray="22 16"/>
+  <text x="50%" y="45%" text-anchor="middle" font-family="system-ui, sans-serif" font-size="76" font-weight="600" fill="#aab3c8">Card 1 — certificado</text>
+  <text x="50%" y="54%" text-anchor="middle" font-family="system-ui, sans-serif" font-size="40" fill="#6c7690">imagem ou PDF + miniatura .webp com o mesmo nome</text>
+</svg>

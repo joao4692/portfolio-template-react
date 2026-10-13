@@ -1,0 +1,630 @@
+.layout {
+  display: flex;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.layout::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--cor-primaria), var(--cor-primaria-clara), var(--cor-primaria));
+  z-index: 250;
+  box-shadow: 0 0 15px color-mix(in srgb, var(--cor-primaria) 60%, transparent);
+}
+
+/* ── PAINEL ESQUERDO (só fundo) ───────────────── */
+.coluna-foto {
+  position: fixed;
+  top: 0;
+  left: -3;
+  width: 28%;
+  height: 100vh;
+  background: linear-gradient(160deg, var(--cor-secundaria-clara) 0%, var(--cor-secundaria) 100%);
+  z-index: 1;
+}
+
+/* ── FOTO — desktop: canto esquerdo com efeito 3D ───── */
+.foto-perfil {
+  position: fixed;
+  bottom: 0;
+  left: 20px;
+  width: calc(35% + 100px);
+  height: 100vh;
+  object-fit: cover;
+  object-position: top center;
+  z-index: 100;
+  pointer-events: none;
+}
+
+/* ── COLUNA CONTEUDO ──────────────────────────── */
+.coluna-conteudo {
+  margin-left: 28%;
+  width: 70%;
+}
+
+/* ── NAVBAR ───────────────────────────────────── */
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 1.25rem 2.25rem;
+  background: var(--cor-quaternaria);
+  backdrop-filter: blur(6px);
+  z-index: 200;
+  box-sizing: border-box;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.navbar-link {
+  color: var(--cor-secundaria);
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  transition: all 0.3s ease;
+  position: relative;
+  padding-bottom: 8px;
+}
+
+.navbar-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cor-primaria), var(--cor-primaria-clara));
+  transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--cor-primaria) 60%, transparent);
+}
+
+.navbar-link:hover {
+  color: var(--cor-primaria);
+  text-shadow: 0 0 8px color-mix(in srgb, var(--cor-primaria) 50%, transparent);
+}
+
+.navbar-link:hover::after {
+  width: 100%;
+}
+
+/* ── HAMBURGER ────────────────────────────────── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  position: relative;
+  z-index: 210;
+}
+
+.hamburger span {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background: var(--cor-secundaria);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.hamburger-ativo span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger-ativo span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.hamburger-ativo span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── HERO ─────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  /* padding-left aumentado para acomodar a foto que agora avança 30px */
+  padding: 4rem 3.5rem 4rem 15vw;
+  background: var(--cor-quaternaria);
+  gap: 2rem;
+  position: relative;
+  z-index: 10;
+}
+
+.hero-conteudo {
+  flex: 1;
+}
+
+.hero-label {
+  font-size: 13px;
+  color: var(--cor-primaria);
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin: 0 0 16px;
+}
+
+.hero-nome {
+  font-size: 62px;
+  font-weight: 700;
+  color: var(--cor-secundaria);
+  letter-spacing: -1.5px;
+  line-height: 1.05;
+  margin: 0 0 28px;
+}
+
+.hero-descricao {
+  font-size: 18px;
+  color: #5c6b72;
+  line-height: 1.75;
+  max-width: 480px;
+  margin: 0 0 40px;
+}
+
+.hero-botao {
+  background: var(--cor-primaria);
+  color: #fff;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  /* menos padding à esquerda: o círculo do play encosta na borda da pílula */
+  padding: 8px 30px 8px 8px;
+  border-radius: 50px;
+  width: fit-content;
+  text-decoration: none;
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--cor-primaria) 35%, transparent);
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.hero-botao:hover {
+  background: var(--cor-primaria-escura);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px color-mix(in srgb, var(--cor-primaria) 45%, transparent);
+}
+
+.hero-botao-icone {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--cor-primaria);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+/* o triângulo do play parece deslocado para a esquerda sem esse ajuste */
+.hero-botao-icone svg {
+  margin-left: 3px;
+}
+
+.hero-botao:hover .hero-botao-icone {
+  transform: scale(1.08);
+}
+
+.hero-trilha {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  width: 300px;
+  flex-shrink: 0;
+  margin-right: 3rem;
+}
+
+.trilha-par {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.trilha-no {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 84px;
+  flex-shrink: 0;
+}
+
+.trilha-icone {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--cor-secundaria-suave);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 6px 18px rgba(0, 0, 0, 0.18);
+}
+
+.trilha-nome {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--cor-secundaria);
+  white-space: nowrap;
+}
+
+.trilha-linha {
+  flex: 1;
+  height: 2px;
+  min-width: 24px;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--cor-primaria) 20%, transparent),
+    var(--cor-primaria),
+    color-mix(in srgb, var(--cor-primaria) 20%, transparent)
+  );
+  box-shadow: 0 0 10px color-mix(in srgb, var(--cor-primaria) 50%, transparent);
+  position: relative;
+}
+
+.trilha-linha::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--cor-primaria-clara);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--cor-primaria-clara) 90%, transparent);
+}
+
+.arco-react {
+  color: #61dafb;
+}
+.arco-js {
+  color: #f7df1e;
+}
+.arco-java {
+  color: #f89820;
+}
+.arco-spring {
+  color: #6db33f;
+}
+.arco-sql {
+  color: #7aa2c8;
+}
+.arco-postgres {
+  color: #4169e1;
+}
+.arco-git {
+  color: #f05032;
+}
+.arco-docker {
+  color: #2496ed;
+}
+.arco-ia {
+  color: #a78bfa;
+}
+.arco-cyber {
+  color: #2dd4bf;
+}
+.arco-node {
+  color: #68a063;
+}
+.arco-python {
+  color: #ffd43b;
+}
+.arco-linux {
+  color: #fcc624;
+}
+.arco-aws {
+  color: #ff9900;
+}
+.arco-ts {
+  color: #3178c6;
+}
+.arco-html {
+  color: #e34f26;
+}
+.arco-css {
+  color: #1572b6;
+}
+.arco-tailwind {
+  color: #06b6d4;
+}
+.arco-nextjs {
+  color: #ffffff;
+}
+.arco-nestjs {
+  color: #e0234e;
+}
+.arco-mongodb {
+  color: #47a248;
+}
+.arco-firebase {
+  color: #ffca28;
+}
+.arco-graphql {
+  color: #e10098;
+}
+.arco-restapi {
+  color: #22c55e;
+}
+.arco-angular {
+  color: #dd0031;
+}
+
+/* ── RODAPÉ ───────────────────────────────────── */
+.rodape {
+  background: var(--cor-secundaria);
+  color: #fafaf8;
+  padding: 1.75rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100vw;
+  margin: 0;
+  margin-left: calc(-50vw + 50%);
+}
+
+.rodape-marca {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+  color: #7c8b9a;
+}
+
+.rodape-marca-destaque {
+  color: var(--cor-primaria);
+}
+
+.rodape-descricao {
+  font-size: 13px;
+  color: #4a5a65;
+  margin: 0;
+}
+
+.rodape-copy {
+  font-size: 11px;
+  color: #4a5a65;
+  margin: 0;
+}
+
+/* botão de vídeo flutuante e seletor de idioma mobile: ocultos no desktop */
+.hero-botao.mobile-video {
+  display: none;
+}
+.mobile-lang-switch {
+  display: none;
+}
+
+/* ── RESPONSIVO MOBILE ────────────────────────── */
+@media (max-width: 982px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  /* painel e foto desktop: ocultos */
+  .coluna-foto {
+    display: none;
+  }
+
+  /* foto mobile: dentro do hero, com a altura dele — vai até a base da seção */
+  .foto-perfil {
+    position: absolute;
+    /* desce a foto: o que passa da base (pés) é cortado no fim do hero */
+    top: 12svh;
+    bottom: auto;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    background: var(--cor-secundaria);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .coluna-conteudo {
+    margin-left: 0;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+  }
+
+  /* Navbar e menu removidos no mobile */
+  .navbar {
+    display: none;
+  }
+
+  /* Hero mobile */
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 3rem 1.5rem 6rem;
+    min-height: 100svh;
+    gap: 1.25rem;
+    background: var(--cor-secundaria);
+    position: relative;
+    z-index: 15;
+    overflow: hidden;
+  }
+
+  /* película escura por cima da foto */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 25, 34, 0.58);
+    z-index: 1;
+  }
+
+  .hero-conteudo,
+  .hero-trilha {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-conteudo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .hero-label {
+    color: var(--cor-primaria-clara);
+  }
+
+  .hero-nome {
+    font-size: 32px;
+    letter-spacing: -0.5px;
+    margin: 0 0 12px;
+    color: #ffffff;
+  }
+
+  /* oculta no mobile: ficava em cima do rosto na foto */
+  .hero-descricao {
+    display: none;
+  }
+
+  .hero-botao {
+    font-size: 14px;
+    padding: 6px 24px 6px 6px;
+    gap: 12px;
+  }
+
+  /* no mobile o botão do hero dá lugar ao flutuante (.mobile-video) */
+  .hero-conteudo .hero-botao {
+    display: none;
+  }
+
+  .hero-botao-icone {
+    width: 38px;
+    height: 38px;
+    font-size: 13px;
+  }
+
+  .hero-trilha {
+    width: 100%;
+    margin: 0 0 1.5rem;
+    gap: 1rem;
+  }
+
+  .trilha-par {
+    gap: 0.5rem;
+  }
+
+  .trilha-no {
+    width: 76px;
+  }
+
+  .trilha-icone {
+    width: 46px;
+    height: 46px;
+    font-size: 22px;
+    background: rgba(8, 20, 28, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .trilha-nome {
+    font-size: 10px;
+    letter-spacing: 0.6px;
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  /* ── SELETOR DE IDIOMA (mobile) ───────────────── */
+  .mobile-lang-switch {
+    display: block;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 220;
+  }
+
+  .mobile-lang-switch .lang-switch {
+    background: color-mix(in srgb, var(--cor-secundaria) 82%, transparent);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .mobile-lang-switch .lang-switch-btn {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .mobile-lang-switch .lang-switch-btn:hover {
+    color: #ffffff;
+  }
+
+  /* ── BOTÃO DE VÍDEO FLUTUANTE ───────────────── */
+  .hero-botao.mobile-video {
+    display: inline-flex;
+    position: fixed;
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    z-index: 100;
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.45),
+      0 8px 24px color-mix(in srgb, var(--cor-primaria) 35%, transparent);
+    opacity: 1;
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease,
+      background 0.2s ease;
+  }
+
+  /* mantém o botão centralizado: o hover do desktop trocaria o transform */
+  .hero-botao.mobile-video:hover {
+    transform: translateX(-50%);
+  }
+
+  /* esconde ao chegar no rodapé */
+  .hero-botao.mobile-video-oculto,
+  .hero-botao.mobile-video-oculto:hover {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+    pointer-events: none;
+  }
+
+  /* esconde com o modal de etapa aberto */
+  body.modal-aberto .hero-botao.mobile-video {
+    display: none;
+  }
+}

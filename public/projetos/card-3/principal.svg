@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <rect width="1200" height="675" fill="#161a22"/>
+  <rect x="12" y="12" width="1176" height="651" rx="18" fill="none" stroke="#4a5368" stroke-width="3" stroke-dasharray="18 14"/>
+  <text x="50%" y="46%" text-anchor="middle" font-family="system-ui, sans-serif" font-size="55" font-weight="600" fill="#aab3c8">Card 3 — imagem principal</text>
+  <text x="50%" y="58%" text-anchor="middle" font-family="system-ui, sans-serif" font-size="30" fill="#6c7690">1200 × 675 px (16:9)</text>
+</svg>

@@ -1,0 +1,218 @@
+/* ── SEÇÃO ────────────────────────────────────────────────── */
+.sobre {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+
+  /* imagem de fundo — definida em sobre.imagemFundo (portfolioData) */
+  background-image: var(--sobre-bg);
+  background-size: cover;
+  background-position: center right;
+  background-attachment: fixed;
+
+  /* fallback se a imagem ainda não existir */
+  background-color: var(--cor-secundaria-clara);
+}
+
+/* ── OVERLAY ──────────────────────────────────────────────── */
+/* gradiente da esquerda (branco forte) para a direita (transparente)
+   deixa a imagem aparecendo no lado direito e o texto legível no esquerdo */
+.sobre-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    color-mix(in srgb, var(--cor-quaternaria) 97%, transparent) 0%,
+    color-mix(in srgb, var(--cor-quaternaria) 93%, transparent) 25%,
+    color-mix(in srgb, var(--cor-quaternaria) 75%, transparent) 45%,
+    color-mix(in srgb, var(--cor-quaternaria) 30%, transparent) 65%,
+    color-mix(in srgb, var(--cor-quaternaria) 0%, transparent) 100%
+  );
+  pointer-events: none;
+}
+
+/* ── CONTEÚDO ─────────────────────────────────────────────── */
+.sobre-conteudo {
+  position: relative;
+  z-index: 1;
+  max-width: 1040px;
+  padding: 6rem 3.5rem 6rem calc(11vw + 10px);
+}
+
+.sobre-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--cor-primaria);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.sobre-titulo {
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--cor-secundaria);
+  letter-spacing: -0.8px;
+  line-height: 1.15;
+  margin: 0 0 2.5rem;
+  position: relative;
+}
+
+.sobre-titulo::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: var(--cor-primaria);
+  border-radius: 2px;
+  margin-top: 14px;
+}
+
+/* ── TEXTO ────────────────────────────────────────────────── */
+.sobre-texto {
+  columns: 2;
+  column-gap: 3rem;
+}
+
+.sobre-texto > .sobre-lema {
+  column-span: all;
+}
+
+.sobre-texto p {
+  font-size: 16px;
+  color: #3a4a52;
+  line-height: 1.85;
+  margin: 0 0 1.4rem;
+  break-inside: avoid;
+}
+
+/* destaques em laranja + negrito */
+.sobre-texto strong {
+  color: var(--cor-primaria);
+  font-weight: 700;
+}
+
+/* lema final */
+.sobre-lema {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: var(--cor-secundaria) !important;
+  letter-spacing: 0.5px;
+  margin-top: 0.5rem !important;
+  font-style: italic;
+}
+
+/* ── COLUNA DE FOTOS ──────────────────────────────────────── */
+.sobre-fotos {
+  position: absolute;
+  right: calc(3.5rem + 15px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  z-index: 2;
+}
+
+.sobre-foto-card {
+  width: 155px;
+  aspect-ratio: 3 / 4;
+  border-radius: 16px;
+  border: 1.5px dashed color-mix(in srgb, var(--cor-secundaria) 22%, transparent);
+  background: rgba(255, 255, 235, 0.48);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.09);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.sobre-foto-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.14);
+}
+
+/* quando for <img>, ocupa toda a caixa sem distorcer */
+.sobre-foto-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+  display: block;
+}
+
+/* ── cascata: topo-direita → centro → baixo-direita ──────── */
+.sobre-foto-1 {
+  align-self: flex-end; /* topo, colado à direita */
+}
+
+.sobre-foto-2 {
+  align-self: flex-start; /* meio, colado à esquerda */
+  transform: translateX(22px); /* empurra um pouco pra direita */
+}
+
+.sobre-foto-3 {
+  align-self: flex-end; /* baixo, volta à direita */
+  transform: translateX(-8px);
+}
+
+.foto-dim {
+  font-size: 11px;
+  font-weight: 600;
+  color: color-mix(in srgb, var(--cor-secundaria) 45%, transparent);
+  letter-spacing: 0.3px;
+}
+
+.foto-tipo {
+  font-size: 10px;
+  color: color-mix(in srgb, var(--cor-secundaria) 30%, transparent);
+}
+
+/* ── RESPONSIVO ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .sobre {
+    background-attachment: scroll; /* fixed não funciona bem em iOS */
+    min-height: auto;
+    flex-direction: column;
+  }
+
+  /* no mobile o gradiente cobre mais para o texto ficar legível */
+  .sobre-overlay {
+    background: linear-gradient(
+      to right,
+      color-mix(in srgb, var(--cor-quaternaria) 97%, transparent) 0%,
+      color-mix(in srgb, var(--cor-quaternaria) 93%, transparent) 60%,
+      color-mix(in srgb, var(--cor-quaternaria) 80%, transparent) 100%
+    );
+  }
+
+  .sobre-conteudo {
+    padding: 4rem 1.5rem;
+  }
+
+  .sobre-titulo {
+    font-size: 28px;
+  }
+
+  .sobre-texto {
+    columns: 1;
+  }
+
+  .sobre-texto p {
+    font-size: 15px;
+  }
+
+  /* esconde a coluna de fotos no mobile — tela pequena demais */
+  .sobre-fotos {
+    display: none;
+  }
+}

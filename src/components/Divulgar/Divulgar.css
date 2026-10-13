@@ -1,0 +1,131 @@
+/* ── FAIXA ────────────────────────────────────────────────── */
+.divulgar {
+  min-height: 300px;
+  background: linear-gradient(
+    135deg,
+    var(--cor-primaria-escura) 0%,
+    var(--cor-primaria) 50%,
+    color-mix(in oklab, var(--cor-primaria), white 9%) 100%
+  );
+  display: flex;
+  align-items: center;
+  padding: 3rem 3.5rem 3rem 11vw;
+  position: relative;
+  overflow: hidden;
+}
+
+/* círculo decorativo de fundo */
+.divulgar::before {
+  content: '';
+  position: absolute;
+  right: -80px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+}
+
+.divulgar::after {
+  content: '';
+  position: absolute;
+  right: 80px;
+  bottom: -100px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  pointer-events: none;
+}
+
+/* ── CONTEÚDO ─────────────────────────────────────────────── */
+.divulgar-conteudo {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+/* ── TÍTULO ───────────────────────────────────────────────── */
+.divulgar-titulo {
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+  line-height: 1.25;
+  margin: 0;
+  max-width: 600px;
+}
+
+/* ── TAGS DE SERVIÇOS ─────────────────────────────────────── */
+.divulgar-servicos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.divulgar-tag {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--cor-primaria);
+  background: #ffffff;
+  border-radius: 50px;
+  padding: 6px 16px;
+  letter-spacing: 0.2px;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    transform 0.2s;
+}
+
+.divulgar-tag:hover {
+  background: rgba(255, 255, 255, 0.88);
+  transform: translateY(-2px);
+}
+
+/* ── BOTÃO WHATSAPP ───────────────────────────────────────── */
+.divulgar-botao {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff;
+  color: var(--cor-secundaria);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  padding: 14px 28px;
+  border-radius: 50px;
+  text-decoration: none;
+  width: fit-content;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    background 0.22s ease;
+}
+
+.divulgar-botao svg {
+  font-size: 18px;
+  color: #25d366;
+}
+
+.divulgar-botao:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.22);
+  background: #f0f0f0;
+}
+
+/* ── RESPONSIVO ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .divulgar {
+    padding: 3rem 1.5rem;
+    min-height: auto;
+  }
+
+  .divulgar-titulo {
+    font-size: 22px;
+  }
+}
